@@ -1,0 +1,125 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #172033;
+  background: #f2f4f7;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-width: 320px;
+  margin: 0;
+  padding: 40px;
+  background: #f2f4f7;
+}
+
+button, input, textarea { font: inherit; }
+
+.survey-app { max-width: 1160px; margin: 0 auto; }
+
+.container {
+  width: 100%;
+  margin: auto;
+  padding: 30px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 8px 24px rgb(15 34 64 / 8%);
+}
+
+.container img { max-width: 100%; }
+
+.title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.subtitle {
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.section {
+  margin-top: 20px;
+  padding: 10px;
+  color: #fff;
+  background: #0f2240;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 160ms ease;
+}
+
+.section:hover { background: #17345e; }
+
+.container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0;
+}
+
+.container td,
+.container th {
+  border: 1px solid #cfcfcf;
+  padding: 6px 8px;
+  vertical-align: top;
+}
+
+.container input[type='text'],
+.container input[type='email'],
+.container textarea {
+  width: 100%;
+  padding: 5px 6px;
+  border: 1px solid #cfcfcf;
+  border-radius: 3px;
+  background: #fff;
+}
+
+.container textarea { resize: vertical; }
+
+.checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.checkbox-group label,
+.container label { line-height: 1.5; }
+
+.form-section { margin-bottom: 20px; }
+.form-section label { display: block; margin: 6px 0 4px; font-weight: normal; }
+
+#calculateButton,
+#exportButton {
+  min-height: 52px;
+  border: 0;
+  border-radius: 8px;
+  padding: 15px 30px;
+  color: white;
+  background: #4caf50;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  transition: transform 160ms ease, background-color 160ms ease;
+}
+
+#calculateButton:hover,
+#exportButton:hover { background: #388e3c; transform: translateY(-1px); }
+
+#ketQuaDiem { overflow-wrap: anywhere; }
+
+@media (max-width: 760px) {
+  body { padding: 16px; }
+  .container { padding: 18px 14px; }
+  .title { font-size: 18px; }
+  .checkbox-group { grid-template-columns: 1fr; }
+  .container table { display: block; overflow-x: auto; white-space: nowrap; }
+  .container td, .container th { min-width: 130px; }
+  #calculateButton, #exportButton { width: 100%; padding-inline: 16px; font-size: 16px; }
+}
