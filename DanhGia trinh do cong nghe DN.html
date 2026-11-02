@@ -1,0 +1,1796 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>A - Thông tin chung doanh nghiệp</title>
+
+<style>
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background:#f2f4f7;
+    margin:0;
+    padding:40px;
+}
+
+.container{
+    width:1100px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border:1px solid #ccc;
+}
+
+.title{
+    text-align:center;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.subtitle{
+    text-align:center;
+    font-style:italic;
+    font-size:13px;
+    margin-bottom:30px;
+}
+
+.section{
+    background:#0f2240;
+    color:white;
+    padding:10px;
+    font-weight:bold;
+    margin-top:20px;
+}
+
+td{
+    border:1px solid #cfcfcf;
+    padding:6px 8px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+input[type=text],
+input[type=email]{
+    width:100%;
+    padding:5px 6px;
+    border:1px solid #cfcfcf;
+    box-sizing:border-box;
+}
+
+.checkbox-group{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+    margin-top:10px;
+}
+
+.form-section{
+    margin-bottom:20px;
+}
+
+.form-section label{
+    display:block;
+    margin:6px 0 4px;
+    font-weight:normal;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div style="text-align: center; margin-bottom: 20px;">
+        <img src="logo.png" alt="Logo Sở KH&CN Tỉnh Quảng Trị" style="width: 200px; height: auto;">
+    </div>
+
+<div class="title">
+PHIẾU KHẢO SÁT ĐIỀU TRA NHU CẦU CỦA DOANH NGHIỆP
+</div>
+
+<div class="subtitle">
+Các thông tin cung cấp theo phiếu này chỉ phục vụ công tác thống kê
+</div>
+
+<div class="section" id="sectionA" onclick="toggleSectionA()">
+    A. THÔNG TIN CHUNG
+</div>
+<div id="sectionAContent" style="border:1px solid #cfcfcf;padding:20px;margin-top:10px;display:none;">
+
+    <div class="form-section">
+        <b>1. Thông tin doanh nghiệp</b>
+        <label>Tên doanh nghiệp:</label>
+        <input type="text" id="info_ten_dn" placeholder="VIẾT CHỮ IN HOA CÓ DẤU">
+
+        <label>Mã số thuế:</label>
+        <input type="text" id="info_mst">
+    </div>
+
+    <div class="form-section">
+        <b>2. Địa chỉ</b>
+        <input type="text" id="info_dia_chi">
+    </div>
+
+    <div class="form-section">
+        <b>3. Điện thoại</b>
+        <input type="text" id="info_sdt">
+    </div>
+
+    <div class="form-section">
+        <b>4. Email</b>
+        <input type="email" id="info_email">
+    </div>
+
+    <div class="form-section">
+        <b>5. Website</b>
+        <input type="text" id="info_website">
+    </div>
+
+    <b>6. Loại hình doanh nghiệp theo giấy chứng nhận đầu tư</b>
+    <div class="checkbox-group">
+        <label><input type="radio" name="loaihinh" id="lh_dnnn" value="DNNN"> Doanh nghiệp nhà nước</label>
+        <label><input type="radio" name="loaihinh" id="lh_tnhh" value="TNHH"> Công ty TNHH</label>
+        <label><input type="radio" name="loaihinh" id="lh_hopdanh" value="HopDanh"> Công ty hợp doanh</label>
+        <label><input type="radio" name="loaihinh" id="lh_tunhan" value="TuNhan"> Doanh nghiệp tư nhân</label>
+        <label><input type="radio" name="loaihinh" id="lh_cophan" value="CoPhan"> Công ty cổ phần</label>
+        <label><input type="radio" name="loaihinh" id="lh_htx" value="HTX"> Hợp tác xã / LH HTX</label>
+        <label><input type="radio" name="loaihinh" id="lh_fdi" value="FDI"> Doanh nghiệp nước ngoài</label>
+        <label><input type="radio" name="loaihinh" id="lh_liendoanh" value="LienDoanh"> Công ty liên doanh</label>
+        <label><input type="radio" name="loaihinh" id="lh_khac" value="Khac"> Loại hình khác</label>
+    </div>
+
+    <br>
+
+    <b>7. Quy mô doanh nghiệp</b>
+    <div class="checkbox-group">
+        <label><input type="radio" name="quymo" id="qm_nho" value="Nho"> Nhỏ (dưới 100 người)</label>
+        <label><input type="radio" name="quymo" id="qm_vua" value="Vua"> Vừa (không quá 200 người)</label>
+        <label><input type="radio" name="quymo" id="qm_lon1" value="Lon1"> Lớn (trên 200 và dưới 3000 người)</label>
+        <label><input type="radio" name="quymo" id="qm_lon2" value="Lon2"> Lớn (trên 3000 người)</label>
+    </div>
+
+    <br>
+
+    <b>8. Lĩnh vực (ngành) hoạt động sản xuất kinh doanh chính</b>
+    <div class="checkbox-group">
+        <label><input type="radio" name="linhvuc" id="lv_chuyengiao" value="ChuyenGiao"> Doanh nghiệp nghiên cứu chuyển giao/đào tạo</label>
+        <label><input type="radio" name="linhvuc" id="lv_thuongmai" value="ThuongMai"> Thương mại/chế biến nông sản - thực phẩm</label>
+        <label><input type="radio" name="linhvuc" id="lv_maymoc" value="MayMoc"> Máy móc thiết bị/công nghệ</label>
+        <label><input type="radio" name="linhvuc" id="lv_khcn" value="DichVuKHCN"> Đơn vị dịch vụ KH&CN</label>
+        <label><input type="radio" name="linhvuc" id="lv_phanbon" value="PhanBon"> Phân bón/vật tư nông nghiệp</label>
+        <label><input type="radio" name="linhvuc" id="lv_trongtrot" value="TrongTrot"> Trồng trọt</label>
+        <label><input type="radio" name="linhvuc" id="lv_channuoi" value="ChanNuoi"> Chăn nuôi</label>
+        <label><input type="radio" name="linhvuc" id="lv_thuysan" value="ThuySan"> Nuôi trồng thủy hải sản</label>
+        <label><input type="radio" name="linhvuc" id="linhvucKhac" value="Khac" onclick="toggleKhac()"> Khác</label>
+    </div>
+
+    <br>
+
+    <div id="khacBox" style="display:none;">
+        <input type="text" id="linhvucKhacText" placeholder="Ghi rõ lĩnh vực">
+    </div>
+
+    <br>
+
+    <b>9. Địa chỉ cơ sở sản xuất</b>
+    <table>
+        <tr>
+            <td width="20%">Cơ sở 1</td>
+            <td><input type="text" id="info_coso_1"></td>
+        </tr>
+        <tr>
+            <td>Cơ sở 2</td>
+            <td><input type="text" id="info_coso_2"></td>
+        </tr>
+        <tr>
+            <td>Cơ sở 3</td>
+            <td><input type="text" id="info_coso_3"></td>
+        </tr>
+    </table>
+
+    <br>
+
+    <b>10. Cơ quan chủ quản hoặc công ty mẹ, công ty có cổ phần chi phối</b>
+    <input type="text" id="info_chu_quan">
+
+    <br><br>
+
+    <b>11. Thông tin người khai phiếu</b>
+    <table>
+        <tr>
+            <td width="20%">Tên</td>
+            <td><input type="text" id="info_nguoi_khai_ten"></td>
+            <td width="20%">Chức vụ</td>
+            <td><input type="text" id="info_nguoi_khai_chuc_vu"></td>
+        </tr>
+        <tr>
+            <td>Điện thoại</td>
+            <td><input type="text" id="info_nguoi_khai_sdt"></td>
+            <td>Email</td>
+            <td><input type="email" id="info_nguoi_khai_email"></td>
+        </tr>
+    </table>
+</div>
+
+<div class="section" id="sectionB" onclick="toggleSectionB()">
+B. THÔNG TIN THIẾT BỊ, CÔNG NGHỆ CỦA DOANH NGHIỆP
+</div>
+<div id="sectionBContent" style="border:1px solid #cfcfcf;padding:20px;margin-top:10px;display:none;">
+
+<b>1. Dây chuyền thiết bị, máy móc, công nghệ sản xuất chính của doanh nghiệp</b>
+
+<table>
+<tr>
+<td>Tên thiết bị, máy móc, công nghệ</td>
+<td>Số lượng</td>
+<td>Năm sản xuất</td>
+<td>Năm đưa vào sử dụng</td>
+<td>Tên sản phẩm/bán sản phẩm</td>
+<td>Sản lượng (thiết kế tối đa/năm)</td>
+</tr>
+
+<tr>
+<td><input type="text" id="b1_ten_1"></td>
+<td><input type="text" id="b1_soluong_1"></td>
+<td><input type="text" id="b1_namsx_1"></td>
+<td><input type="text" id="b1_namsd_1"></td>
+<td><input type="text" id="b1_tensp_1"></td>
+<td><input type="text" id="b1_sanluong_1"></td>
+</tr>
+
+<tr>
+<td><input type="text" id="b1_ten_2"></td>
+<td><input type="text" id="b1_soluong_2"></td>
+<td><input type="text" id="b1_namsx_2"></td>
+<td><input type="text" id="b1_namsd_2"></td>
+<td><input type="text" id="b1_tensp_2"></td>
+<td><input type="text" id="b1_sanluong_2"></td>
+</tr>
+
+<tr>
+<td><input type="text" id="b1_ten_3"></td>
+<td><input type="text" id="b1_soluong_3"></td>
+<td><input type="text" id="b1_namsx_3"></td>
+<td><input type="text" id="b1_namsd_3"></td>
+<td><input type="text" id="b1_tensp_3"></td>
+<td><input type="text" id="b1_sanluong_3"></td>
+</tr>
+</table>
+
+<br>
+
+<b>2. Giá trị đầu tư thiết bị, máy móc ban đầu (Gbđ)</b>
+
+<table>
+<tr>
+<td>Tổng giá trị đầu tư</td>
+<td><input type="text" id="b2_tong_giatri"></td>
+<td>VNĐ</td>
+<td>Năm đầu tư</td>
+<td><input type="text" id="b2_nam_dautu"></td>
+</tr>
+</table>
+
+<br>
+
+<b>3. Giá trị thiết bị hiện tại (Gsx)</b>
+
+<table>
+<tr>
+<td>Tổng giá trị đầu tư</td>
+<td><input type="text" id="b3_tong_giatri"></td>
+<td>VNĐ</td>
+</tr>
+</table>
+
+<br>
+
+<b>4. Giá trị thiết bị, máy móc, công nghệ đầu tư mới (trong 3 năm gần nhất) phục vụ mở rộng sản xuất (Gtbm1)</b>
+
+<br><br>
+
+<label>Tên thiết bị công nghệ chính:</label>
+<input type="text" id="b4_ten_thietbi">
+
+<br><br>
+
+<table>
+<tr>
+<td width="30%">Tổng giá trị đầu tư</td>
+<td><input type="text" id="b4_tong_giatri"></td>
+<td width="10%">VNĐ</td>
+</tr>
+</table>
+
+<br>
+
+<b>5. Tổng giá trị thiết bị, máy móc, công nghệ mới thay thế (trong 3 năm gần nhất) phục vụ bảo dưỡng, sửa chữa (Gtbm2)</b>
+
+<table>
+<tr>
+<td width="30%">Tổng giá trị thay thế</td>
+<td><input type="text" id="b5_tong_giatri"></td>
+<td width="10%">VNĐ</td>
+</tr>
+</table>
+
+<br>
+
+<b>6. Tổng giá trị của các thiết bị công nghệ liên quan đến số hóa quá trình sản xuất</b>
+
+<br><br>
+
+<label>Tên thiết bị công nghệ chính:</label>
+<input type="text" id="b6_ten_thietbi">
+
+<br><br>
+
+<table>
+<tr>
+<td width="30%">Tổng giá trị đầu tư</td>
+<td><input type="text" id="b6_tong_giatri"></td>
+<td width="10%">VNĐ</td>
+</tr>
+</table>
+
+<br>
+
+<b>7. Công nghệ được chuyển giao và giá trị hợp đồng chuyển giao công nghệ (trong 3 năm gần nhất)</b>
+
+<br><br>
+
+<label>Loại công nghệ nhận chuyển giao:</label>
+<input type="text" id="b7_loai_congnghe">
+
+<br><br>
+
+<label><input type="radio" name="chuyengiao" id="b7_radio_daychuyen" value="Dây chuyền, thiết bị công nghệ đồng bộ"> Dây chuyền, thiết bị công nghệ đồng bộ</label><br>
+<label><input type="radio" name="chuyengiao" id="b7_radio_banquyen" value="Bản quyền hoặc cấp phép công nghệ"> Bản quyền hoặc cấp phép công nghệ</label><br>
+<label><input type="radio" name="chuyengiao" id="b7_radio_thietbi_caitien" value="Thiết bị, công nghệ cụ thể để điều chỉnh, cải tiến"> Thiết bị, công nghệ cụ thể để điều chỉnh, cải tiến và tích hợp vào dây chuyền hiện có</label><br>
+<label><input type="radio" name="chuyengiao" id="b7_radio_phatminh" value="Phát minh, sáng chế"> Phát minh, sáng chế</label>
+
+<br><br>
+
+<table>
+<tr>
+<td width="30%">Tổng giá trị đầu tư</td>
+<td><input type="text" id="b7_tong_giatri"></td>
+<td width="10%">VNĐ</td>
+</tr>
+</table>
+
+<br>
+<label>Hướng dẫn: Mục B1: Đối với doanh nghiệp có nhiều dây chuyền SX, chỉ liệt kê 03 tên dây chuyền sản xuất chính có giá trị sản lượng cao nhất, sắp xếp theo thứ tự giảm dần. Mục B7: Ghi tổng giá trị hợp đồng CGCN trong 3 năm gần nhất đối với trường hợp hợp đồng CGCN trả một lần; Ghi tổng giá trị phải trả trong vòng 3 năm (kể từ khi hợp đồng có hiệu lực) đối với hợp đồng trả theo tỷ lệ % trên doanh thu hằng năm. Doanh nghiệp tích vào các loại công nghệ mà doanh nghiệp được nhận chuyển giao (nếu có).</label>
+
+</div>
+
+<div class="section" id="sectionC" onclick="toggleSectionC()">
+C. THÔNG TIN SẢN XUẤT KINH DOANH CỦA DOANH NGHIỆP
+</div>
+
+<div id="sectionCContent" style="border:1px solid #cfcfcf;padding:20px;margin-top:10px;display:none;">
+
+<h3>1. Tổng hoạt động sản xuất kinh doanh của doanh nghiệp trong ba năm gần nhất</h3>
+
+<table>
+<tr>
+<td>Chỉ tiêu</td>
+<td>Đơn vị</td>
+<td>Năm thứ nhất</td>
+<td>Năm thứ hai</td>
+<td>Năm thứ ba</td>
+</tr>
+<tr>
+<td>Tổng sản lượng (Ptt)</td>
+<td></td>
+<td><input type="text" id="c1_ptt_nam1"></td>
+<td><input type="text" id="c1_ptt_nam2"></td>
+<td><input type="text" id="c1_ptt_nam3"></td>
+</tr>
+<tr>
+<td>Tổng công suất thiết kế (P)</td>
+<td></td>
+<td><input type="text" id="c1_p_nam1"></td>
+<td><input type="text" id="c1_p_nam2"></td>
+<td><input type="text" id="c1_p_nam3"></td>
+</tr>
+<tr>
+<td>Giá trị sản xuất (Gsp)</td>
+<td>VNĐ</td>
+<td><input type="text" id="c1_gsp_nam1"></td>
+<td><input type="text" id="c1_gsp_nam2"></td>
+<td><input type="text" id="c1_gsp_nam3"></td>
+</tr>
+<tr>
+<td>Giá trị SP đạt yêu cầu (Gđ)</td>
+<td>VNĐ</td>
+<td><input type="text" id="c1_gd_nam1"></td>
+<td><input type="text" id="c1_gd_nam2"></td>
+<td><input type="text" id="c1_gd_nam3"></td>
+</tr>
+<tr>
+<td>Doanh thu (Gđt)</td>
+<td>VNĐ</td>
+<td><input type="text" id="c1_gdt_nam1"></td>
+<td><input type="text" id="c1_gdt_nam2"></td>
+<td><input type="text" id="c1_gdt_nam3"></td>
+</tr>
+<tr>
+<td>Chi phí (Gcp)</td>
+<td>VNĐ</td>
+<td><input type="text" id="c1_gcp_nam1"></td>
+<td><input type="text" id="c1_gcp_nam2"></td>
+<td><input type="text" id="c1_gcp_nam3"></td>
+</tr>
+</table>
+
+<br>
+
+<h3>2. Sản phẩm chính của doanh nghiệp</h3>
+
+<p><b>a) Tên sản phẩm chính 1:</b> <input type="text" id="c2_sp1_ten"></p>
+<p>Tiêu chuẩn SP đạt được: <input type="text" id="c2_sp1_tc"></p>
+<table>
+<tr>
+<td>Chỉ tiêu</td>
+<td>Đơn vị</td>
+<td>Năm thứ nhất</td>
+<td>Năm thứ hai</td>
+<td>Năm thứ ba</td>
+</tr>
+<tr>
+<td>Doanh thu</td>
+<td>VNĐ</td>
+<td><input type="text" id="c2_sp1_dt_nam1"></td>
+<td><input type="text" id="c2_sp1_dt_nam2"></td>
+<td><input type="text" id="c2_sp1_dt_nam3"></td>
+</tr>
+</table>
+<br>
+
+<p><b>b) Tên sản phẩm chính 2:</b> <input type="text" id="c2_sp2_ten"></p>
+<p>Tiêu chuẩn SP đạt được: <input type="text" id="c2_sp2_tc"></p>
+<table>
+<tr>
+<td>Chỉ tiêu</td>
+<td>Đơn vị</td>
+<td>Năm thứ nhất</td>
+<td>Năm thứ hai</td>
+<td>Năm thứ ba</td>
+</tr>
+<tr>
+<td>Doanh thu</td>
+<td>VNĐ</td>
+<td><input type="text" id="c2_sp2_dt_nam1"></td>
+<td><input type="text" id="c2_sp2_dt_nam2"></td>
+<td><input type="text" id="c2_sp2_dt_nam3"></td>
+</tr>
+</table>
+<br>
+
+<p><b>c) Tên sản phẩm chính 3:</b> <input type="text" id="c2_sp3_ten"></p>
+<p>Tiêu chuẩn SP đạt được: <input type="text" id="c2_sp3_tc"></p>
+<table>
+<tr>
+<td>Chỉ tiêu</td>
+<td>Đơn vị</td>
+<td>Năm thứ nhất</td>
+<td>Năm thứ hai</td>
+<td>Năm thứ ba</td>
+</tr>
+<tr>
+<td>Doanh thu</td>
+<td>VNĐ</td>
+<td><input type="text" id="c2_sp3_dt_nam1"></td>
+<td><input type="text" id="c2_sp3_dt_nam2"></td>
+<td><input type="text" id="c2_sp3_dt_nam3"></td>
+</tr>
+</table>
+<br>
+
+<p><b>d) Một số sản phẩm khác:</b> <input type="text" id="c2_spkhac_ten"></p>
+<table>
+<tr>
+<td>Chỉ tiêu</td>
+<td>Đơn vị</td>
+<td>Năm thứ nhất</td>
+<td>Năm thứ hai</td>
+<td>Năm thứ ba</td>
+</tr>
+<tr>
+<td>Doanh thu</td>
+<td>VNĐ</td>
+<td><input type="text" id="c2_spkhac_dt_nam1"></td>
+<td><input type="text" id="c2_spkhac_dt_nam2"></td>
+<td><input type="text" id="c2_spkhac_dt_nam3"></td>
+</tr>
+</table>
+<br>
+
+<h3>3. Khả năng bảo dưỡng, sửa chữa máy móc, trang thiết bị của doanh nghiệp</h3>
+
+<label>
+<input type="checkbox" id="repairDept" onchange="toggleRepairDept()">
+Bộ phận phụ trách sửa chữa, bảo dưỡng
+</label>
+
+<div id="repairDeptDetail" style="display:none; margin-left:25px; margin-top:10px;">
+<p>
+Số lượng nhân lực phụ trách sửa chữa, bảo dưỡng:
+<input type="text" id="c3_nhanluc_tong" style="width:120px;"> người
+</p>
+<p>
+Trình độ nhân lực phụ trách sửa chữa, bảo dưỡng:
+<input type="text" id="c3_nhanluc_kysu" style="width:120px;"> Kỹ sư
+<input type="text" id="c3_nhanluc_congnhan" style="width:120px;"> Công nhân
+</p>
+<p>
+Máy móc, thiết bị chính dùng để sửa chữa, bảo dưỡng:
+</p>
+<textarea id="c3_maymoc_txt" style="width:100%;height:60px;"></textarea>
+</div>
+
+<p>
+Mức độ chủ động thực hiện của doanh nghiệp: là khả năng tự thực hiện bảo dưỡng, sửa chữa máy móc, dây chuyền, thiết bị của doanh nghiệp, được xác định qua các cấp độ tăng dần bao gồm:
+</p>
+
+<label><input type="checkbox" id="c3_mucdo_1"> Bảo dưỡng, sửa chữa khi có sự cố;</label><br>
+<label><input type="checkbox" id="c3_mucdo_2"> Bảo dưỡng, sửa chữa theo các kế hoạch đã được lập và theo quy định của nhà sản xuất;</label><br>
+<label><input type="checkbox" id="c3_mucdo_3"> Bảo dưỡng, sửa chữa nhằm loại bỏ các khiếm khuyết trong hệ thống để nâng cao hiệu suất;</label><br>
+<label><input type="checkbox" id="c3_mucdo_4"> Bảo dưỡng, sửa chữa nâng cao hiệu quả hệ thống trên cơ sở phân tích các dữ liệu và độ tin cậy của máy móc, trang thiết bị bằng các công cụ hỗ trợ (phần mềm chuyên dụng, AI, điện toán đám mây...).</label>
+
+<p>Liệt kê chi tiết:</p>
+<textarea id="c3_lietke_txt" style="width:100%;height:80px;"></textarea>
+
+<br><br>
+
+<h3>4. Nguyên vật liệu đầu vào để sản xuất</h3>
+
+<p><b>a) Tên nguyên vật liệu 1:</b> <input type="text" id="c4_nvl1_ten" style="width:60%;"></p>
+<table>
+<tr>
+<td>Chỉ tiêu</td>
+<td>Đơn vị</td>
+<td>Năm thứ nhất</td>
+<td>Năm thứ hai</td>
+<td>Năm thứ ba</td>
+</tr>
+<tr>
+<td>Số lượng</td>
+<td></td>
+<td><input type="text" id="c4_nvl1_sl_nam1"></td>
+<td><input type="text" id="c4_nvl1_sl_nam2"></td>
+<td><input type="text" id="c4_nvl1_sl_nam3"></td>
+</tr>
+<tr>
+<td>Giá trị</td>
+<td>VNĐ</td>
+<td><input type="text" id="c4_nvl1_gt_nam1"></td>
+<td><input type="text" id="c4_nvl1_gt_nam2"></td>
+<td><input type="text" id="c4_nvl1_gt_nam3"></td>
+</tr>
+</table>
+<br>
+
+<p><b>b) Tên nguyên vật liệu 2:</b> <input type="text" id="c4_nvl2_ten" style="width:60%;"></p>
+<table>
+<tr>
+<td>Chỉ tiêu</td>
+<td>Đơn vị</td>
+<td>Năm thứ nhất</td>
+<td>Năm thứ hai</td>
+<td>Năm thứ ba</td>
+</tr>
+<tr>
+<td>Số lượng</td>
+<td></td>
+<td><input type="text" id="c4_nvl2_sl_nam1"></td>
+<td><input type="text" id="c4_nvl2_sl_nam2"></td>
+<td><input type="text" id="c4_nvl2_sl_nam3"></td>
+</tr>
+<tr>
+<td>Giá trị</td>
+<td>VNĐ</td>
+<td><input type="text" id="c4_nvl2_gt_nam1"></td>
+<td><input type="text" id="c4_nvl2_gt_nam2"></td>
+<td><input type="text" id="c4_nvl2_gt_nam3"></td>
+</tr>
+</table>
+<br>
+
+<p><b>c) Tên nguyên vật liệu 3:</b> <input type="text" id="c4_nvl3_ten" style="width:60%;"></p>
+<table>
+<tr>
+<td>Chỉ tiêu</td>
+<td>Đơn vị</td>
+<td>Năm thứ nhất</td>
+<td>Năm thứ hai</td>
+<td>Năm thứ ba</td>
+</tr>
+<tr>
+<td>Số lượng</td>
+<td></td>
+<td><input type="text" id="c4_nvl3_sl_nam1"></td>
+<td><input type="text" id="c4_nvl3_sl_nam2"></td>
+<td><input type="text" id="c4_nvl3_sl_nam3"></td>
+</tr>
+<tr>
+<td>Giá trị</td>
+<td>VNĐ</td>
+<td><input type="text" id="c4_nvl3_gt_nam1"></td>
+<td><input type="text" id="c4_nvl3_gt_nam2"></td>
+<td><input type="text" id="c4_nvl3_gt_nam3"></td>
+</tr>
+</table>
+<br>
+
+<p><b>d) Các loại nguyên vật liệu khác:</b> <input type="text" id="c4_nvlkhac_ten" style="width:60%;"></p>
+<table>
+<tr>
+<td>Chỉ tiêu</td>
+<td>Đơn vị</td>
+<td>Năm thứ nhất</td>
+<td>Năm thứ hai</td>
+<td>Năm thứ ba</td>
+</tr>
+<tr>
+<td>Số lượng</td>
+<td></td>
+<td><input type="text" id="c4_nvlkhac_sl_nam1"></td>
+<td><input type="text" id="c4_nvlkhac_sl_nam2"></td>
+<td><input type="text" id="c4_nvlkhac_sl_nam3"></td>
+</tr>
+<tr>
+<td>Giá trị</td>
+<td>VNĐ</td>
+<td><input type="text" id="c4_nvlkhac_gt_nam1"></td>
+<td><input type="text" id="c4_nvlkhac_gt_nam2"></td>
+<td><input type="text" id="c4_nvlkhac_gt_nam3"></td>
+</tr>
+</table>
+<br>
+
+<p><b>e) Tổng giá trị toàn bộ các nguyên vật liệu của doanh nghiệp (Gnvl):</b></p>
+<table>
+<tr>
+<td>Chỉ tiêu</td>
+<td>Đơn vị</td>
+<td>Năm thứ nhất</td>
+<td>Năm thứ hai</td>
+<td>Năm thứ ba</td>
+</tr>
+<tr>
+<td>Giá trị</td>
+<td>VNĐ</td>
+<td><input type="text" id="c4_tong_gt_nam1"></td>
+<td><input type="text" id="c4_tong_gt_nam2"></td>
+<td><input type="text" id="c4_tong_gt_nam3"></td>
+</tr>
+</table>
+
+<h3>5. Tiêu thụ điện và nhiên liệu</h3>
+
+<p><b>a) Tiêu thụ điện</b></p>
+<table>
+<tr>
+<td>Chỉ tiêu</td>
+<td>Đơn vị</td>
+<td>Năm thứ nhất</td>
+<td>Năm thứ hai</td>
+<td>Năm thứ ba</td>
+</tr>
+<tr>
+<td>Số lượng</td>
+<td>KWh</td>
+<td><input type="text" id="c5_dien_sl_nam1"></td>
+<td><input type="text" id="c5_dien_sl_nam2"></td>
+<td><input type="text" id="c5_dien_sl_nam3"></td>
+</tr>
+<tr>
+<td>Giá trị</td>
+<td>VNĐ</td>
+<td><input type="text" id="c5_dien_gt_nam1"></td>
+<td><input type="text" id="c5_dien_gt_nam2"></td>
+<td><input type="text" id="c5_dien_gt_nam3"></td>
+</tr>
+</table>
+<br>
+
+<p><b>b) Tiêu thụ than:</b></p>
+<table>
+<tr>
+<td>Chỉ tiêu</td>
+<td>Đơn vị</td>
+<td>Năm thứ nhất</td>
+<td>Năm thứ hai</td>
+<td>Năm thứ ba</td>
+</tr>
+<tr>
+<td>Số lượng</td>
+<td>Tấn</td>
+<td><input type="text" id="c5_than_sl_nam1"></td>
+<td><input type="text" id="c5_than_sl_nam2"></td>
+<td><input type="text" id="c5_than_sl_nam3"></td>
+</tr>
+<tr>
+<td>Giá trị</td>
+<td>VNĐ</td>
+<td><input type="text" id="c5_than_gt_nam1"></td>
+<td><input type="text" id="c5_than_gt_nam2"></td>
+<td><input type="text" id="c5_than_gt_nam3"></td>
+</tr>
+</table>
+<br>
+
+<p><b>c) Tiêu thụ xăng dầu:</b></p>
+<table>
+<tr>
+<td>Chỉ tiêu</td>
+<td>Đơn vị</td>
+<td>Năm thứ nhất</td>
+<td>Năm thứ hai</td>
+<td>Năm thứ ba</td>
+</tr>
+<tr>
+<td>Số lượng</td>
+<td>Lít</td>
+<td><input type="text" id="c5_xang_sl_nam1"></td>
+<td><input type="text" id="c5_xang_sl_nam2"></td>
+<td><input type="text" id="c5_xang_sl_nam3"></td>
+</tr>
+<tr>
+<td>Giá trị</td>
+<td>VNĐ</td>
+<td><input type="text" id="c5_xang_gt_nam1"></td>
+<td><input type="text" id="c5_xang_gt_nam2"></td>
+<td><input type="text" id="c5_xang_gt_nam3"></td>
+</tr>
+</table>
+<br>
+
+<p><b>d) Tiêu thụ loại nhiên liệu khác:</b></p>
+<table>
+<tr>
+<td>Chỉ tiêu</td>
+<td>Đơn vị</td>
+<td>Năm thứ nhất</td>
+<td>Năm thứ hai</td>
+<td>Năm thứ ba</td>
+</tr>
+<tr>
+<td>Giá trị</td>
+<td>VNĐ</td>
+<td><input type="text" id="c5_khac_gt_nam1"></td>
+<td><input type="text" id="c5_khac_gt_nam2"></td>
+<td><input type="text" id="c5_khac_gt_nam3"></td>
+</tr>
+</table>
+<br>
+
+<p><b>Tổng chi phí điện và nhiên liệu của doanh nghiệp (Gnl):</b></p>
+<table>
+<tr>
+<td>Chỉ tiêu</td>
+<td>Đơn vị</td>
+<td>Năm thứ nhất</td>
+<td>Năm thứ hai</td>
+<td>Năm thứ ba</td>
+</tr>
+<tr>
+<td>Giá trị</td>
+<td>VNĐ</td>
+<td><input type="text" id="c5_tong_gt_nam1"></td>
+<td><input type="text" id="c5_tong_gt_nam2"></td>
+<td><input type="text" id="c5_tong_gt_nam3"></td>
+</tr>
+</table>
+
+<h3>6. Việc áp dụng sáng kiến, cải tiến kỹ thuật, hợp lý hóa sản xuất của doanh nghiệp</h3>
+
+<label>
+<input type="checkbox" id="c6_chk_chuongtrinh">
+Chương trình giải pháp thúc đẩy việc áp dụng các sáng kiến, cải tiến kỹ thuật, hợp lý hóa sản xuất
+</label>
+<br><br>
+
+<p>
+Số lượng sáng kiến, cải tiến kỹ thuật đã có trong 3 năm gần nhất:
+<input type="text" id="c6_sl_sangkien" style="width:150px;"> sáng kiến
+</p>
+
+<p><b>Liệt kê 1÷5 sáng kiến kiến có hiệu quả cao nhất:</b></p>
+
+<p>a) Tên sáng kiến: <input type="text" id="c6_sk1_ten" style="width:70%;"></p>
+<p>Hiệu quả áp dụng sáng kiến:</p>
+<textarea id="c6_sk1_hieuqua" style="width:100%;height:60px;"></textarea>
+<br>
+
+<p>b) Tên sáng kiến: <input type="text" id="c6_sk2_ten" style="width:70%;"></p>
+<p>Hiệu quả áp dụng sáng kiến:</p>
+<textarea id="c6_sk2_hieuqua" style="width:100%;height:60px;"></textarea>
+<br>
+
+<p>c) Tên sáng kiến: <input type="text" id="c6_sk3_ten" style="width:70%;"></p>
+<p>Hiệu quả áp dụng sáng kiến:</p>
+<textarea id="c6_sk3_hieuqua" style="width:100%;height:60px;"></textarea>
+<br>
+
+<p>d) Tên sáng kiến: <input type="text" id="c6_sk4_ten" style="width:70%;"></p>
+<p>Hiệu quả áp dụng sáng kiến:</p>
+<textarea id="c6_sk4_hieuqua" style="width:100%;height:60px;"></textarea>
+<br>
+
+<p>e) Tên sáng kiến: <input type="text" id="c6_sk5_ten" style="width:70%;"></p>
+<p>Hiệu quả áp dụng sáng kiến:</p>
+<textarea id="c6_sk5_hieuqua" style="width:100%;height:60px;"></textarea>
+
+</div>
+
+<div class="section" onclick="toggleSectionD()">
+    D. THÔNG TIN NHÂN LỰC, QUẢN LÝ, THÔNG TIN VÀ MÔI TRƯỜNG CỦA DOANH NGHIỆP
+</div>
+
+<div id="sectionDContent" style="display:none;border:1px solid #cfcfcf;padding:20px;margin-top:10px;">
+
+<h4>1. Thông tin lao động của doanh nghiệp</h4>
+
+<p>Thông tin về lao động của doanh nghiệp trong năm trước liền kề năm đánh giá:</p>
+
+<table>
+<tr>
+<td>Chỉ tiêu</td>
+<td>Đơn vị</td>
+<td>Số lượng</td>
+</tr>
+
+<tr>
+<td>Tổng số lao động của doanh nghiệp (M)</td>
+<td>Người</td>
+<td><input type="text" id="d1_tong_laodong"></td>
+</tr>
+
+<tr>
+<td>Công nhân trực tiếp sản xuất có (Mtt)</td>
+<td>Người</td>
+<td><input type="text" id="d1_congnhan_tt"></td>
+</tr>
+
+<tr>
+<td>Số cán bộ khối gián tiếp trong doanh nghiệp, Mgt = M - Mtt</td>
+<td>Người</td>
+<td><input type="text" id="d1_canbo_gt"></td>
+</tr>
+
+<tr>
+<td>Số lượng công nhân đã qua huấn luyện nghề (kể cả trung cấp)</td>
+<td>Người</td>
+<td><input type="text" id="d1_congnhan_hln"></td>
+</tr>
+
+<tr>
+<td>Số lượng công nhân bậc cao, nghệ nhân (Mbc)</td>
+<td>Người</td>
+<td><input type="text" id="d1_congnhan_bc"></td>
+</tr>
+
+<tr>
+<td>Số lượng nhân lực làm công tác quản lý</td>
+<td>Người</td>
+<td><input type="text" id="d1_nhanluc_ql"></td>
+</tr>
+
+<tr>
+<td>Số lượng cán bộ quản lý có trình độ và kinh nghiệm quản lý phù hợp (Mql)</td>
+<td>Người</td>
+<td><input type="text" id="d1_canbo_ql"></td>
+</tr>
+
+<tr>
+<td>Số lượng cán bộ nghiệp vụ (kế hoạch, tài chính, bán hàng...) có trình độ đại học trở lên phù hợp (Mnv)</td>
+<td>Người</td>
+<td><input type="text" id="d1_canbo_nv"></td>
+</tr>
+
+<tr>
+<td>Số lượng nhân lực làm công tác kỹ thuật</td>
+<td>Người</td>
+<td><input type="text" id="d1_nhanluc_kt"></td>
+</tr>
+
+<tr>
+<td>Số lượng lao động có trình độ cao đẳng trở lên</td>
+<td>Người</td>
+<td><input type="text" id="d1_laodong_cd"></td>
+</tr>
+
+<tr>
+<td>Số lượng lao động chuyên làm công tác nghiên cứu và phát triển</td>
+<td>Người</td>
+<td><input type="text" id="d1_laodong_nc"></td>
+</tr>
+
+</table>
+
+
+<h4>2. Thông tin về đào tạo nhân lực của doanh nghiệp</h4>
+
+<p>Thông tin về hoạt động đào tạo, huấn luyện (ĐTHL) của doanh nghiệp trong ba năm:</p>
+
+<table>
+
+<tr>
+<td>Chỉ tiêu</td>
+<td>Đơn vị</td>
+<td>Năm thứ nhất</td>
+<td>Năm thứ hai</td>
+<td>Năm thứ ba</td>
+</tr>
+
+<tr>
+<td>Số lượt đào tạo</td>
+<td>Người</td>
+<td><input type="text" id="d2_luot_nam1"></td>
+<td><input type="text" id="d2_luot_nam2"></td>
+<td><input type="text" id="d2_luot_nam3"></td>
+</tr>
+
+<tr>
+<td>Quản lý</td>
+<td>Người</td>
+<td><input type="text" id="d2_ql_nam1"></td>
+<td><input type="text" id="d2_ql_nam2"></td>
+<td><input type="text" id="d2_ql_nam3"></td>
+</tr>
+
+<tr>
+<td>Cán bộ kỹ thuật</td>
+<td>Người</td>
+<td><input type="text" id="d2_kt_nam1"></td>
+<td><input type="text" id="d2_kt_nam2"></td>
+<td><input type="text" id="d2_kt_nam3"></td>
+</tr>
+
+<tr>
+<td>Công nhân</td>
+<td>Người</td>
+<td><input type="text" id="d2_cn_nam1"></td>
+<td><input type="text" id="d2_cn_nam2"></td>
+<td><input type="text" id="d2_cn_nam3"></td>
+</tr>
+
+<tr>
+<td>Chi cho ĐTHL</td>
+<td>VNĐ</td>
+<td><input type="text" id="d2_chi_nam1"></td>
+<td><input type="text" id="d2_chi_nam2"></td>
+<td><input type="text" id="d2_chi_nam3"></td>
+</tr>
+
+<tr>
+<td>Tổng chi cho ĐTHL (Gđthl)</td>
+<td>VNĐ</td>
+<td colspan="3"><input type="text" id="d2_tong_chi"></td>
+</tr>
+
+</table>
+
+<p><b>Các nội dung đào tạo đã thực hiện:</b></p>
+
+<label><input type="checkbox" id="d2_chk_vanhanh"> Vận hành, bảo dưỡng, an toàn</label><br>
+<label><input type="checkbox" id="d2_chk_nangcao"> Đào tạo nâng cao tay nghề cho đội ngũ kỹ thuật viên</label><br>
+<label><input type="checkbox" id="d2_chk_quanly"> Đào tạo về quản lý, quản trị công nghệ, thiết kế, phát triển sản phẩm mới</label><br>
+<label><input type="checkbox" id="d2_chk_chuyensau"> Đào tạo chuyên sâu về công nghệ, cập nhật công nghệ mới</label>
+
+
+<h4>3. Hệ thống thông tin phục vụ sản xuất, quản lý của Doanh nghiệp</h4>
+
+<p>Liệt kê các hệ thống thông tin phục vụ sản xuất, quản lý mà doanh nghiệp đang áp dụng</p>
+
+<label><input type="checkbox" id="d3_chk_mes"> Hệ thống thực hành sản xuất (MES)</label><br>
+<label><input type="checkbox" id="d3_chk_erp"> Hệ thống lập kế hoạch nguồn lực doanh nghiệp (ERP)</label><br>
+<label><input type="checkbox" id="d3_chk_plm"> Hệ thống quản lý vòng đời sản phẩm (PLM)</label><br>
+<label><input type="checkbox" id="d3_chk_pdm"> Hệ thống quản lý dữ liệu sản phẩm (PDM)</label><br>
+<label><input type="checkbox" id="d3_chk_pps"> Hệ thống lập kế hoạch sản xuất (PPS)</label><br>
+<label><input type="checkbox" id="d3_chk_scm"> Hệ thống quản lý chuỗi cung ứng (SCM)</label>
+
+
+<h4>4. Hệ thống thu thập dữ liệu phục vụ số hóa quá trình sản xuất của doanh nghiệp</h4>
+
+<p>Liệt kê mức độ tích hợp sản xuất của doanh nghiệp thông qua việc áp dụng các hệ thống:</p>
+
+<label><input type="checkbox" id="d4_chk_pda"> Hệ thống thu thập dữ liệu sản xuất (PDA hoặc SCADA)</label><br>
+<label><input type="checkbox" id="d4_chk_mdc"> Hệ thống thu thập dữ liệu máy móc (MDC)</label><br>
+<label><input type="checkbox" id="d4_chk_fms"> Hệ thống sản xuất linh hoạt (FMS) hoặc hệ thống điều khiển phân tán (DCS)</label><br>
+<label><input type="checkbox" id="d4_chk_cim"> Hệ thống sản xuất tích hợp (CIM)</label>
+
+
+<h4>5. Thông tin chung về bảo vệ môi trường của doanh nghiệp</h4>
+
+<p>Liệt kê các hệ thống xử lý chất thải và bảo vệ môi trường mà doanh nghiệp đang áp dụng:</p>
+
+<label><input type="radio" name="mt" id="d5_mt1" value="Hệ thống quản lý môi trường phù hợp với tiêu chuẩn hệ thống quản lý môi trường tiên tiến (đã được cấp chứng chỉ), có hệ thống xử lý chất thải đáp ứng quy định, có hệ thống tái chế và tái sử dụng chất thải"> Hệ thống quản lý môi trường phù hợp với tiêu chuẩn hệ thống quản lý môi trường tiên tiến (đã được cấp chứng chỉ), có hệ thống xử lý chất thải đáp ứng quy định, có hệ thống tái chế và tái sử dụng chất thải</label><br>
+
+<label><input type="radio" name="mt" id="d5_mt2" value="Hệ thống quản lý môi trường phù hợp với tiêu chuẩn hệ thống quản lý môi trường tiên tiến (đã được cấp chứng chỉ), có hệ thống xử lý chất thải đáp ứng quy định"> Hệ thống quản lý môi trường phù hợp với tiêu chuẩn hệ thống quản lý môi trường tiên tiến (đã được cấp chứng chỉ), có hệ thống xử lý chất thải đáp ứng quy định</label><br>
+
+<label><input type="radio" name="mt" id="d5_mt3" value="Hệ thống quản lý môi trường phù hợp với tiêu chuẩn hệ thống quản lý môi trường tiên tiến, có hệ thống xử lý chất thải đáp ứng quy định"> Hệ thống quản lý môi trường phù hợp với tiêu chuẩn hệ thống quản lý môi trường tiên tiến, có hệ thống xử lý chất thải đáp ứng quy định</label>
+<h4>Hướng dẫn:</h4>
+
+<p>
+- Mục D1: Số liệu lao động và các chi phí thực hiện trong 01 năm lấy theo Báo cáo tài chính của năm liền kề năm điều tra của doanh nghiệp. 
+Công nhân đã qua huấn luyện nghề là công nhân đã được đào tạo và cấp chứng chỉ nghề tại các cơ sở giáo dục, đào tạo. 
+Công nhân bậc cao, nghệ nhân là công nhân đã thi và đạt các chứng nhận bậc thợ hoặc những công nhân đã có nhiều năm kinh nghiệm trong lĩnh vực chuyên môn đảm nhận (tối thiểu 10 năm).
+</p>
+
+<p>
+- Mục D2, D3, D4, D5: Doanh nghiệp tích vào ô xác nhận nếu trong doanh nghiệp có thực hiện các hoạt động này.
+</p>
+
+</div>
+
+<div class="section" onclick="toggleSectionE()">
+Đ. ĐẦU TƯ CHO NGHIÊN CỨU VÀ PHÁT TRIỂN CỦA DOANH NGHIỆP
+</div>
+
+<div id="sectionEContent" class="section-content" style="display:none;">
+
+<p><b>1. Hạ tầng thông tin của doanh nghiệp</b></p>
+<p>Liệt kê cơ sở hạ tầng công nghệ thông tin (phần cứng và phần mềm) mà doanh nghiệp hiện đã đầu tư đáp ứng được các nhu cầu sản xuất, kinh doanh của doanh nghiệp như sau:</p>
+<div>
+<input type="radio" name="it_infra" id="e1_infra_1" value="Đủ để triển khai một số ứng dụng thường xuyên"> Đủ để triển khai một số ứng dụng thường xuyên của doanh nghiệp
+</div>
+<div>
+<input type="radio" name="it_infra" id="e1_infra_2" value="Đủ để tự động hóa các quy trình"> Đủ để tự động hóa các quy trình tác nghiệp, kinh doanh nhằm nâng cao hiệu quả hoạt động doanh nghiệp
+</div>
+<div>
+<input type="radio" name="it_infra" id="e1_infra_3" value="Có hệ thống cơ sở dữ liệu và phần mềm tích hợp"> Có hệ thống cơ sở dữ liệu và phần mềm tích hợp được ứng dụng trên toàn bộ hoạt động quản lý và tác nghiệp đến từng bộ phận của doanh nghiệp
+</div>
+
+
+<p><b>2. Chi phí dành cho thông tin và công nghệ thông tin của doanh nghiệp</b></p>
+<p>Liệt kê các chi phí dành cho thông tin và công nghệ thông tin trong 03 năm gần nhất:</p>
+<table>
+<tr>
+<td>Chỉ tiêu</td>
+<td>Đơn vị</td>
+<td>Năm thứ nhất</td>
+<td>Năm thứ 2</td>
+<td>Năm thứ 3</td>
+</tr>
+<tr>
+<td>Chi cho phần mềm phục vụ quản lý, sản xuất</td>
+<td>VNĐ</td>
+<td><input type="text" id="e2_pm1_nam1"></td>
+<td><input type="text" id="e2_pm1_nam2"></td>
+<td><input type="text" id="e2_pm1_nam3"></td>
+</tr>
+<tr>
+<td>Chi cho các phần mềm bảo mật (sản xuất, văn phòng...)</td>
+<td>VNĐ</td>
+<td><input type="text" id="e2_pmbm_nam1"></td>
+<td><input type="text" id="e2_pmbm_nam2"></td>
+<td><input type="text" id="e2_pmbm_nam3"></td>
+</tr>
+<tr>
+<td>Chi cho khai thác thông tin quản lý, sản xuất</td>
+<td>VNĐ</td>
+<td><input type="text" id="e2_kt1_nam1"></td>
+<td><input type="text" id="e2_kt1_nam2"></td>
+<td><input type="text" id="e2_kt1_nam3"></td>
+</tr>
+<tr>
+<td>Chi cho phần mềm phục vụ quản lý, sản xuất</td>
+<td>VNĐ</td>
+<td><input type="text" id="e2_pm2_nam1"></td>
+<td><input type="text" id="e2_pm2_nam2"></td>
+<td><input type="text" id="e2_pm2_nam3"></td>
+</tr>
+<tr>
+<td>Chi cho các hoạt động khai thác CNTT khác</td>
+<td>VNĐ</td>
+<td><input type="text" id="e2_khac_nam1"></td>
+<td><input type="text" id="e2_khac_nam2"></td>
+<td><input type="text" id="e2_khac_nam3"></td>
+</tr>
+<tr>
+<td>Tổng chi cho thông tin và CNTT</td>
+<td>VNĐ</td>
+<td><input type="text" id="e2_tong1_nam1"></td>
+<td><input type="text" id="e2_tong1_nam2"></td>
+<td><input type="text" id="e2_tong1_nam3"></td>
+</tr>
+<tr>
+<td>Tổng chi cho CNTT trong 3 năm của đơn vị (Gtt)</td>
+<td>VNĐ</td>
+<td colspan="3"><input type="text" id="e2_tong3nam"></td>
+</tr>
+</table>
+
+
+<p><b>3. Hạ tầng dành cho nghiên cứu và phát triển của doanh nghiệp</b></p>
+<p>Liệt kê các hạ tầng dành cho nghiên cứu và phát triển (R&D) mà doanh nghiệp hiện có:</p>
+<div>
+<input type="checkbox" id="e3_chk_hatang"> Cơ sở hạ tầng dành cho nghiên cứu và phát triển
+</div>
+<p>
+Năm bắt đầu hoạt động của cơ sở:
+<input type="text" id="e3_nam_batdau" style="width:200px;">
+</p>
+<p><b>Mức độ đầu tư:</b></p>
+<div>
+<input type="radio" name="rd_level" id="e3_rd_1" value="Có bộ phận nghiên cứu, phát triển chuyên trách"> Có bộ phận nghiên cứu, phát triển chuyên trách và các trung tâm, phòng thí nghiệm (chế tạo, thử nghiệm) đáp ứng nhu cầu
+</div>
+<div>
+<input type="radio" name="rd_level" id="e3_rd_2" value="Có bộ phận hoạt động nghiên cứu (có thể kiêm nhiệm)"> Có bộ phận hoạt động nghiên cứu, phát triển công nghệ, sản phẩm (có thể kiêm nhiệm)
+</div>
+
+
+<p><b>4. Chi phí dành cho nghiên cứu và phát triển</b></p>
+<p>Liệt kê các chi phí dành cho hoạt động nghiên cứu và phát triển của doanh nghiệp trong ba năm:</p>
+<table>
+<tr>
+<td>Chỉ tiêu</td>
+<td>Đơn vị</td>
+<td>Năm thứ nhất</td>
+<td>Năm thứ hai</td>
+<td>Năm thứ ba</td>
+</tr>
+<tr>
+<td>Tổng chi cho hoạt động nghiên cứu phát triển (GR&D)</td>
+<td></td>
+<td><input type="text" id="e4_chi_nam1"></td>
+<td><input type="text" id="e4_chi_nam2"></td>
+<td><input type="text" id="e4_chi_nam3"></td>
+</tr>
+</table>
+<div>
+<input type="checkbox" id="e4_chk_quykhcn"> Doanh nghiệp có thành lập Quỹ phát triển KH&CN
+</div>
+<div>
+<input type="checkbox" id="e4_chk_dnkhcn"> Doanh nghiệp có được công nhận doanh nghiệp KH&CN
+</div>
+
+
+<p><b>5. Doanh nghiệp đã xây dựng, áp dụng và đánh giá chứng nhận các Hệ thống quản lý chất lượng tiên tiến:</b></p>
+<div><input type="checkbox" id="e5_iso9001"> ISO 9001</div>
+<div><input type="checkbox" id="e5_iso22000"> ISO 22000</div>
+<div><input type="checkbox" id="e5_iso14000"> ISO 14000</div>
+<div><input type="checkbox" id="e5_iso45001"> ISO 45001</div>
+<div>
+<input type="checkbox" id="e5_chk_khac"> Khác:
+<input type="text" id="e5_txt_khac" style="width:400px;">
+</div>
+
+
+<p><b>6. Doanh nghiệp đã xây dựng và áp dụng các công cụ cải tiến năng suất chất lượng:</b></p>
+<div><input type="checkbox" id="e6_5s"> 5S</div>
+<div><input type="checkbox" id="e6_kaizen"> Kaizen</div>
+<div><input type="checkbox" id="e6_kpi"> KPI</div>
+<div><input type="checkbox" id="e6_lean"> Lean 6 sigma</div>
+<div><input type="checkbox" id="e6_tqm"> TQM</div>
+<div><input type="checkbox" id="e6_tpm"> TPM</div>
+<div><input type="checkbox" id="e6_qcc"> QCC</div>
+<div><input type="checkbox" id="e6_mbo"> MBO</div>
+<div>
+<input type="checkbox" id="e6_chk_khac"> Khác:
+<input type="text" id="e6_txt_khac" style="width:400px;">
+</div>
+
+
+<p><b>7. Doanh nghiệp đã áp dụng và chứng nhận thực hành nông nghiệp tốt (G.A.P):</b></p>
+<div><input type="checkbox" id="e7_vietgap"> VietGAP</div>
+<div><input type="checkbox" id="e7_jgap"> JGAP</div>
+<div><input type="checkbox" id="e7_aseangap"> ASEAN-GAP</div>
+<div><input type="checkbox" id="e7_globalgap"> GlobalGAP</div>
+
+
+<p><b>8. Doanh nghiệp đã sử dụng mã số, mã vạch, mã vùng trồng và xây dựng hệ thống truy xuất nguồn gốc:</b></p>
+<div><input type="checkbox" id="e8_mavach"> Mã số, mã vạch</div>
+<div><input type="checkbox" id="e8_maqr"> Mã QR</div>
+<div><input type="checkbox" id="e8_mavungtrong"> Mã vùng trồng</div>
+<div><input type="checkbox" id="e8_truyxuat"> Hệ thống truy xuất nguồn gốc</div>
+</div>
+
+<div class="section" onclick="toggleSectionF()">
+  E. NĂNG LỰC VÀ KẾT QUẢ ĐỔI MỚI SÁNG TẠO CỦA DOANH NGHIỆP
+</div>
+
+<div id="sectionFContent" style="display:none; class="section-content">
+
+  <p><b>1. Anh/chị đã biết hay nghe đến thông tin về chính sách hỗ trợ doanh nghiệp ĐMST từ đâu?</b></p>
+  <div><input type="checkbox" id="q1_cb1" value="Truyền hình"> Truyền hình</div>
+  <div><input type="checkbox" id="q1_cb2" value="Sách báo"> Sách báo</div>
+  <div><input type="checkbox" id="q1_cb3" value="Internet/mạng xã hội"> Internet/mạng xã hội</div>
+  <div><input type="checkbox" id="q1_cb4" value="Thông tin từ cổng thông tin điện tử"> Thông tin từ cổng thông tin điện tử</div>
+  <div><input type="checkbox" id="q1_cb5" value="Hội thảo, tọa đàm"> Hội thảo, tọa đàm</div>
+  <div><input type="checkbox" id="q1_cb6" value="Thông tin từ đơn vị quản lý địa phương"> Thông tin từ đơn vị quản lý địa phương</div>
+  <div><input type="checkbox" id="q1_cb7" value="Thông tin từ cổng thông tin điện tử địa phương"> Thông tin từ cổng thông tin điện tử địa phương</div>
+  <div>
+    <input type="checkbox" id="q1_cb_other" value="Khác"> Khác
+    <input type="text" id="q1_text_other" style="width:300px;">
+  </div>
+
+  <p><b>2. Hoạt động nghiên cứu và phát triển sản phẩm/dịch vụ mới (R&D) phục vụ doanh nghiệp đã được triển khai từ thời gian nào?</b></p>
+  <div><input type="radio" id="rd_time_1" name="rd_time" value="Chưa bắt đầu"> Chưa bắt đầu</div>
+  <div><input type="radio" id="rd_time_2" name="rd_time" value="1-2 năm"> 1-2 năm</div>
+  <div><input type="radio" id="rd_time_3" name="rd_time" value="2-3 năm"> 2-3 năm</div>
+  <div><input type="radio" id="rd_time_4" name="rd_time" value="3-5 năm"> 3-5 năm</div>
+  <div><input type="radio" id="rd_time_5" name="rd_time" value="Trên 5 năm"> Trên 5 năm</div>
+
+  <p><b>3. Kết quả nghiên cứu và phát triển sản phẩm</b></p>
+  <div>
+    <input type="checkbox" id="q3_cb1"> Tạo ra sản phẩm mới về kiểu dáng. 
+    Tên sản phẩm: <input type="text" id="q3_text1" style="width:300px;">
+  </div>
+  <div>
+    <input type="checkbox" id="q3_cb2"> Tạo ra sản phẩm mới về tính năng. 
+    Tên sản phẩm: <input type="text" id="q3_text2" style="width:300px;">
+  </div>
+  <div>
+    <input type="checkbox" id="q3_cb3"> Tạo ra sản phẩm hoàn toàn mới trên thị trường. 
+    Tên sản phẩm: <input type="text" id="q3_text3" style="width:300px;">
+  </div>
+
+  <table>
+    <tr>
+      <td>Chỉ tiêu</td>
+      <td>Đơn vị</td>
+      <td>Năm thứ nhất</td>
+      <td>Năm thứ hai</td>
+      <td>Năm thứ ba</td>
+    </tr>
+    <tr>
+      <td>Doanh thu của các sản phẩm mới</td>
+      <td>VNĐ</td>
+      <td><input type="text" id="q3_rev_y1"></td>
+      <td><input type="text" id="q3_rev_y2"></td>
+      <td><input type="text" id="q3_rev_y3"></td>
+    </tr>
+  </table>
+
+  <p><b>4. Kết quả nghiên cứu và phát triển công nghệ</b></p>
+  <div>
+    <input type="checkbox" id="q4_cb1"> Có quy trình, phương tiện, thiết bị công nghệ đang được tiến hành nghiên cứu. 
+    Tên công nghệ: <input type="text" id="q4_text1" style="width:350px;">
+  </div>
+  <div>
+    <input type="checkbox" id="q4_cb2"> Có quy trình, phương tiện, thiết bị công nghệ đã được nghiên cứu phát triển nhưng đang ở mức thử nghiệm hay quy mô phòng thí nghiệm. 
+    Tên công nghệ: <input type="text" id="q4_text2" style="width:350px;">
+  </div>
+  <div>
+    <input type="checkbox" id="q4_cb3"> Có quy trình, công nghệ, phương thức sản xuất mới được chấp nhận đăng ký hoặc được cấp bằng độc quyền giải pháp hữu ích. 
+    Tên công nghệ: <input type="text" id="q4_text3" style="width:350px;">
+  </div>
+  <div>
+    <input type="checkbox" id="q4_cb4"> Có quy trình, công nghệ, phương thức sản xuất mới được bảo hộ dưới dạng bằng sáng chế và được thương mại hóa. 
+    Tên công nghệ: <input type="text" id="q4_text4" style="width:350px;">
+  </div>
+
+  <p><b>5. Năng lực chuyển đổi số của doanh nghiệp</b></p>
+  <p><b>a) Xây dựng chiến lược các mạng công nghiệp (CMCN) 4.0 hoặc chuyển đổi số tại doanh nghiệp</b></p>
+  <div><input type="radio" id="dx_strat_1" name="dx_strategy" value="Chưa biết"> Chưa biết</div>
+  <div><input type="radio" id="dx_strat_2" name="dx_strategy" value="Đã biết nhưng chưa thực hiện"> Đã biết nhưng chưa thực hiện</div>
+  <div><input type="radio" id="dx_strat_3" name="dx_strategy" value="Chuẩn bị xây dựng chiến lược"> Doanh nghiệp chuẩn bị xây dựng chiến lược</div>
+  <div><input type="radio" id="dx_strat_4" name="dx_strategy" value="Đã xây dựng được chiến lược"> Doanh nghiệp đã xây dựng được chiến lược</div>
+  <div><input type="radio" id="dx_strat_5" name="dx_strategy" value="Đang thực hiện chiến lược"> Doanh nghiệp đang thực hiện các nội dung trong chiến lược</div>
+
+  <p><b>b) Nghiên cứu và áp dụng các công nghệ số phục vụ cho hoạt động sản xuất và kinh doanh của doanh nghiệp</b></p>
+  <div><input type="checkbox" id="q5b_cb1" value="Điện toán đám mây"> Điện toán đám mây</div>
+  <div><input type="checkbox" id="q5b_cb2" value="Mô hình hóa"> Mô hình hóa</div>
+  <div><input type="checkbox" id="q5b_cb3" value="Robot tiên tiến"> Robot tiên tiến</div>
+  <div><input type="checkbox" id="q5b_cb4" value="An ninh mạng"> An ninh mạng</div>
+  <div><input type="checkbox" id="q5b_cb5" value="Thực tế ảo tăng cường (AR)"> Thực tế ảo tăng cường (AR)</div>
+  <div><input type="checkbox" id="q5b_cb6" value="Internet kết nối vạn vật (IoT)"> Internet kết nối vạn vật (IoT)</div>
+  <div><input type="checkbox" id="q5b_cb7" value="Thực tại ảo (VR)"> Thực tại ảo (VR)</div>
+  <div><input type="checkbox" id="q5b_cb8" value="Vật liệu mới"> Vật liệu mới</div>
+  <div><input type="checkbox" id="q5b_cb9" value="Dữ liệu lớn (Bigdata)"> Dữ liệu lớn (Bigdata)</div>
+  <div><input type="checkbox" id="q5b_cb10" value="Chuỗi khối (Blockchain)"> Chuỗi khối (Blockchain)</div>
+  <div><input type="checkbox" id="q5b_cb11" value="Tích hợp hệ thống"> Tích hợp hệ thống</div>
+  <div><input type="checkbox" id="q5b_cb12" value="In 3D"> In 3D</div>
+
+  <p><b>c) Mức độ áp dụng các công nghệ số tại doanh nghiệp</b></p>
+  <div><input type="radio" id="dx_level_1" name="dx_level" value="Đang nghiên cứu áp dụng"> Đang nghiên cứu để áp dụng tại doanh nghiệp</div>
+  <div><input type="radio" id="dx_level_2" name="dx_level" value="Đã triển khai một số bộ phận"> Đã triển khai tại một số bộ phận</div>
+  <div><input type="radio" id="dx_level_3" name="dx_level" value="Đã triển khai toàn bộ"> Đã triển khai toàn bộ trong nhà máy</div>
+
+  <p><b>6. Hoạt động quản trị tài sản trí tuệ đã được triển khai từ thời gian nào?</b></p>
+  <div><input type="radio" id="ip_time_1" name="ip_time" value="Chưa bắt đầu"> Chưa bắt đầu</div>
+  <div><input type="radio" id="ip_time_2" name="ip_time" value="1-2 năm"> 1-2 năm</div>
+  <div><input type="radio" id="ip_time_3" name="ip_time" value="2-3 năm"> 2-3 năm</div>
+  <div><input type="radio" id="ip_time_4" name="ip_time" value="3-5 năm"> 3-5 năm</div>
+  <div><input type="radio" id="ip_time_5" name="ip_time" value="Trên 5 năm"> Trên 5 năm</div>
+
+  <p><b>7. Đơn vị đã ban hành quy chế quản trị tài sản trí tuệ/tài sản vô hình chưa?</b></p>
+  <div><input type="radio" id="ip_pol_1" name="ip_policy" value="Chưa thực hiện"> Chưa thực hiện</div>
+  <div><input type="radio" id="ip_pol_2" name="ip_policy" value="Đang thực hiện"> Đang thực hiện</div>
+  <div><input type="radio" id="ip_pol_3" name="ip_policy" value="Đã thực hiện"> Đã thực hiện</div>
+
+  <p><b>8. Tài sản trí tuệ tại đơn vị gồm?</b></p>
+  <div><input type="checkbox" id="q8_cb1" value="Sáng chế/Giải pháp hữu ích"> Sáng chế/Giải pháp hữu ích</div>
+  <div><input type="checkbox" id="q8_cb2" value="Nhãn hiệu"> Nhãn hiệu</div>
+  <div><input type="checkbox" id="q8_cb3" value="Tác phẩm và quyền liên quan"> Tác phẩm và quyền liên quan</div>
+  <div><input type="checkbox" id="q8_cb4" value="Phần mềm"> Phần mềm</div>
+  <div><input type="checkbox" id="q8_cb5" value="Kiểu dáng công nghiệp"> Kiểu dáng công nghiệp</div>
+  <div><input type="checkbox" id="q8_cb6" value="Bí mật kinh doanh"> Bí mật kinh doanh</div>
+  <div><input type="checkbox" id="q8_cb7" value="Giống cây trồng"> Giống cây trồng</div>
+  <div>
+    <input type="checkbox" id="q8_cb_other" value="Khác"> Khác
+    <input type="text" id="q8_text_other" style="width:300px;">
+  </div>
+
+  <p><b>9. Năng lực liên kết, hợp tác trong nghiên cứu và phát triển của doanh nghiệp</b></p>
+  <div><input type="checkbox" id="q9_cb1" value="Hợp tác dự án R&D"> Có hoạt động hợp tác theo hình thức dự án nghiên cứu phát triển công nghệ sản phẩm mới</div>
+  <div><input type="checkbox" id="q9_cb2" value="Mời chuyên gia"> Có hoạt động hợp tác theo hình thức mời chuyên gia hỗ trợ, tiếp nhận kết quả nghiên cứu, đào tạo R&D</div>
+  
+</div>
+</div>
+
+<div style="text-align: center; margin: 40px 0;">
+    <button onclick="tinhDiemCongNghe()" style="padding: 15px 30px; font-size: 18px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
+        TÍNH ĐIỂM NĂNG LỰC CÔNG NGHỆ
+    </button>
+</div>
+
+<div id="ketQuaDiem" style="display: none; border: 2px solid #4CAF50; padding: 20px; margin: 20px; background-color: #f9f9f9; border-radius: 8px;">
+    <h2 style="color: #4CAF50; text-align: center;">KẾT QUẢ ĐÁNH GIÁ (THÔNG TƯ 17/2019/TT-BKHCN)</h2>
+    <div id="chiTietDiem" style="font-size: 16px; line-height: 1.6;"></div>
+</div>
+
+<div style="text-align: center; margin: 40px 0;">
+    <button onclick="xuatFileWord()" style="padding: 15px 30px; font-size: 18px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
+        XUẤT FILE
+    </button>
+</div>
+
+</div> <div style="text-align: center; color: #666; font-size: 14px; font-weight: bold;">
+    &copy; Copyright Xuan An Nguyen
+</div>
+
+</div>
+<script>
+
+// Hàm hỗ trợ lấy số từ input an toàn
+function getNum(id) {
+    let val = document.getElementById(id) ? document.getElementById(id).value : "0";
+    val = val.replace(/,/g, ''); // Xóa dấu phẩy nếu có
+    let num = parseFloat(val);
+    return isNaN(num) ? 0 : num;
+}
+
+// Hàm hỗ trợ kiểm tra checkbox/radio
+function isChecked(id) {
+    let el = document.getElementById(id);
+    return el ? el.checked : false;
+}
+
+function tinhDiemCongNghe() {
+    let totalScore = 0;
+    let detailHTML = "";
+
+    // --- CÁC HẰNG SỐ CHUẨN THEO NGÀNH (Phụ lục II) ---
+    // Ví dụ: Đang giả lập cho ngành "Sản xuất chế biến thực phẩm - C.10"
+    const K_chuan1 = 200000000; // Hệ số tự động hóa trung bình (200 triệu VNĐ)
+    const K_chuan4 = 150000000; // Hệ số năng suất lao động trung bình (150 triệu VNĐ)
+
+    // ==========================================
+    // NHÓM T: HIỆN TRẠNG THIẾT BỊ CÔNG NGHỆ (Tối đa 30đ)
+    // ==========================================
+    let scoreT = 0;
+
+    // Tiêu chí 1: Mức độ khấu hao (Tối đa 5đ) - Điều 4 Khoản 1
+    let g_bd = getNum('b2_tong_giatri'); // Nguyên giá
+    let g_sx = getNum('b3_tong_giatri'); // Hiện tại
+    if (g_bd > 0) {
+        let K_kh = ((g_bd - g_sx) / g_bd) * 100;
+        let p1 = (K_kh < 20) ? 5 : (K_kh < 40) ? 4 : (K_kh < 60) ? 3 : (K_kh < 80) ? 2 : 1;
+        scoreT += p1;
+    }
+
+    // Tiêu chí 3: Mức độ đổi mới thiết bị (Tối đa 3đ) - Điều 4 Khoản 3
+    let gtbm1 = getNum('b4_tong_giatri'); // Mở rộng
+    let gtbm2 = getNum('b5_tong_giatri'); // Thay thế
+    if (g_sx > 0) {
+        let gtbm = (2 * gtbm1 + gtbm2) / 2;
+        let K_dm = (gtbm / g_sx) * 100;
+        let p3 = (K_dm >= 75) ? 3 : (K_dm >= 50) ? 2 : (K_dm >= 25) ? 1 : 0;
+        scoreT += p3;
+    }
+
+    // Tiêu chí 4: Mức độ tự động hóa & tích hợp (Tối đa 7đ) - Điều 4 Khoản 4
+    let score_tc4 = 0;
+    let m_tt = getNum('d1_congnhan_tt'); // Lao động trực tiếp
+    if (m_tt > 0 && g_sx > 0) {
+        let K_tdh = g_sx / m_tt;
+        if (K_tdh >= 1.5 * K_chuan1) score_tc4 += 3;
+        else if (K_tdh >= K_chuan1) score_tc4 += 2;
+        else if (K_tdh >= 0.5 * K_chuan1) score_tc4 += 1;
+    }
+    // Phần b: Tích hợp phần mềm sản xuất
+    if (isChecked('d4_chk_pda')) score_tc4 += 1;
+    if (isChecked('d4_chk_mdc')) score_tc4 += 1;
+    if (isChecked('d4_chk_fms')) score_tc4 += 1;
+    if (isChecked('d4_chk_cim')) score_tc4 += 1;
+    scoreT += Math.min(score_tc4, 7);
+
+
+    // ==========================================
+    // NHÓM E: HIỆU QUẢ KHAI THÁC CÔNG NGHỆ (Tối đa 20đ)
+    // ==========================================
+    let scoreE = 0;
+
+    // Tiêu chí 10: Năng lực bảo dưỡng sửa chữa (Tối đa 4đ) - Điều 5 Khoản 3
+    if (isChecked('c3_mucdo_4')) scoreE += 4;
+    else if (isChecked('c3_mucdo_3')) scoreE += 3;
+    else if (isChecked('c3_mucdo_2')) scoreE += 2;
+    else if (isChecked('c3_mucdo_1')) scoreE += 1;
+
+    // Tiêu chí 12: Chất lượng nguồn nhân lực (Tối đa 4đ) - Điều 5 Khoản 5
+    let m_cn = getNum('d1_congnhan_hln');
+    let m_bc = getNum('d1_congnhan_bc');
+    let m_ql = getNum('d1_canbo_ql');
+    let m_nv = getNum('d1_canbo_nv');
+    let m_gt = getNum('d1_canbo_gt');
+
+    if (m_tt > 0 && m_gt > 0) {
+        let H1 = (m_cn + m_bc) / m_tt;
+        let H2 = (m_ql + m_nv) / m_gt;
+        let H = ((H1 + H2) / 2) * 100;
+        
+        if (H >= 25) scoreE += 4;
+        else if (H >= 15) scoreE += 3;
+        else if (H >= 5) scoreE += 2;
+        else if (H >= 2.5) scoreE += 1;
+    }
+
+    // ==========================================
+    // NHÓM O: TỔ CHỨC QUẢN LÝ (Tối đa 19đ)
+    // ==========================================
+    let scoreO = 0;
+
+    // Tiêu chí 14: Thông tin phục vụ sản xuất quản lý (Tối đa 5đ) - Điều 6 Khoản 2
+    let infoSysCount = 0;
+    if (isChecked('d3_chk_mes')) infoSysCount++;
+    if (isChecked('d3_chk_erp')) infoSysCount++;
+    if (isChecked('d3_chk_plm')) infoSysCount++;
+    if (isChecked('d3_chk_pdm')) infoSysCount++;
+    if (isChecked('d3_chk_pps')) infoSysCount++;
+    if (isChecked('d3_chk_scm')) infoSysCount++;
+    
+    if (infoSysCount >= 5) scoreO += 5;
+    else if (infoSysCount > 0) scoreO += infoSysCount;
+
+    // Tiêu chí 17: Bảo vệ môi trường (Tối đa 3đ) - Điều 6 Khoản 5
+    if (isChecked('d5_mt1')) scoreO += 3;
+    else if (isChecked('d5_mt2')) scoreO += 2;
+    else if (isChecked('d5_mt3')) scoreO += 1;
+
+
+    // ==========================================
+    // NHÓM R: NGHIÊN CỨU PHÁT TRIỂN (Tối đa 17đ)
+    // ==========================================
+    let scoreR = 0;
+
+    // Tiêu chí 18: Ứng dụng CNTT (Tối đa 3đ) - Điều 7 Khoản 1
+    if (isChecked('e1_infra_3')) scoreR += 3;
+    else if (isChecked('e1_infra_2')) scoreR += 2;
+    else if (isChecked('e1_infra_1')) scoreR += 1;
+
+    // Tiêu chí 21: Hạ tầng R&D (Tối đa 3đ) - Điều 7 Khoản 4
+    if (isChecked('e3_rd_1')) scoreR += 2; // Tạm tính 2đ cho chuyên trách
+    else if (isChecked('e3_rd_2')) scoreR += 1; 
+
+    // Tiêu chí 22: Quỹ KHCN (1 điểm cộng)
+    if (isChecked('e4_chk_quykhcn')) scoreR += 1;
+
+
+    // ==========================================
+    // NHÓM I: ĐỔI MỚI SÁNG TẠO (Tối đa 14đ)
+    // ==========================================
+    let scoreI = 0;
+
+    // Tiêu chí 24: Kết quả nghiên cứu công nghệ (Tối đa 4đ) - Điều 8 Khoản 2
+    if (isChecked('q4_cb4')) scoreI += 4;
+    else if (isChecked('q4_cb3')) scoreI += 3;
+    else if (isChecked('q4_cb2')) scoreI += 2;
+    else if (isChecked('q4_cb1')) scoreI += 1;
+
+    // ==========================================
+    // TỔNG HỢP VÀ PHÂN LOẠI
+    // ==========================================
+    totalScore = scoreT + scoreE + scoreO + scoreR + scoreI;
+
+    // Hệ số đồng bộ (TĐB) = T^0.30 * E^0.20 * O^0.19 * R^0.17 * I^0.14
+    // Lưu ý: Tính theo điểm chuẩn hóa của từng nhóm
+    let T_norm = scoreT / 30;
+    let E_norm = scoreE / 20;
+    let O_norm = scoreO / 19;
+    let R_norm = scoreR / 17;
+    let I_norm = scoreI / 14;
+
+    // Tránh Math.pow(0) gây lỗi hiển thị, gán min = 0.01 nếu chưa nhập gì
+    T_norm = T_norm === 0 ? 0.01 : T_norm;
+    E_norm = E_norm === 0 ? 0.01 : E_norm;
+    O_norm = O_norm === 0 ? 0.01 : O_norm;
+    R_norm = R_norm === 0 ? 0.01 : R_norm;
+    I_norm = I_norm === 0 ? 0.01 : I_norm;
+
+    let TDB = Math.pow(T_norm, 0.30) * Math.pow(E_norm, 0.20) * Math.pow(O_norm, 0.19) * Math.pow(R_norm, 0.17) * Math.pow(I_norm, 0.14);
+
+    // Phân loại (Điều 9 Khoản 3)
+    let phanLoai = "";
+    if (TDB >= 0.65 && totalScore >= 75) phanLoai = "TIÊN TIẾN";
+    else if (TDB >= 0.5 && totalScore >= 60) phanLoai = "TRUNG BÌNH TIÊN TIẾN";
+    else if (TDB >= 0.3 && totalScore >= 35) phanLoai = "TRUNG BÌNH";
+    else phanLoai = "LẠC HẬU";
+
+    // Hiển thị kết quả
+    detailHTML += `<ul>
+        <li><b>Nhóm T (Hiện trạng thiết bị - Max 30):</b> ${scoreT.toFixed(2)} điểm</li>
+        <li><b>Nhóm E (Hiệu quả khai thác - Max 20):</b> ${scoreE.toFixed(2)} điểm</li>
+        <li><b>Nhóm O (Tổ chức quản lý - Max 19):</b> ${scoreO.toFixed(2)} điểm</li>
+        <li><b>Nhóm R (Nghiên cứu phát triển - Max 17):</b> ${scoreR.toFixed(2)} điểm</li>
+        <li><b>Nhóm I (Đổi mới sáng tạo - Max 14):</b> ${scoreI.toFixed(2)} điểm</li>
+    </ul>`;
+    
+    detailHTML += `<h3 style="color: #d32f2f;">TỔNG ĐIỂM: ${totalScore.toFixed(2)} / 100</h3>`;
+    detailHTML += `<p><b>Hệ số đồng bộ (TĐB):</b> ${TDB.toFixed(3)}</p>`;
+    detailHTML += `<h3>KẾT LUẬN PHÂN LOẠI: <span style="color: blue;">${phanLoai}</span></h3>`;
+    detailHTML += `<p><i>(Lưu ý: Điểm này được mô phỏng một phần dựa trên các trường dữ liệu hiện có trong biểu mẫu. Các tiêu chí cần so sánh với chuẩn ngành hoặc yêu cầu Báo cáo tài chính 3 năm sẽ cần điều chỉnh thêm dữ liệu đầu vào).</i></p>`;
+    detailHTML += `<p style="color: red;"><b>Nhu cầu tìm kiếm hoặc đổi mới công nghệ của doanh nghiệp trong thời gian tới:</b></p>`;
+    detailHTML += `<textarea id="c3_dexuat_txt" style="width:100%;height:80px;"></textarea>`;
+
+    document.getElementById('chiTietDiem').innerHTML = detailHTML;
+    document.getElementById('ketQuaDiem').style.display = "block";
+}
+
+function xuatFileWord() {
+    // 0. Lưu lại giá trị của c3_dexuat_txt (nếu có) trước khi bị hàm tính điểm reset
+    let oldDexuatVal = "";
+    const oldDexuatTxt = document.getElementById('c3_dexuat_txt');
+    if (oldDexuatTxt) {
+        oldDexuatVal = oldDexuatTxt.value;
+    }
+
+    // 1. Chạy hàm tính điểm trước
+    tinhDiemCongNghe();
+
+    // Phục hồi lại giá trị người dùng đã nhập vào textarea
+    const dexuatTxt = document.getElementById('c3_dexuat_txt');
+    if (dexuatTxt) {
+        dexuatTxt.value = oldDexuatVal;
+        dexuatTxt.innerHTML = oldDexuatVal;
+    }
+
+    // 2. Cập nhật giá trị thực tế vào thuộc tính HTML của DOM
+    const liveInputs = document.querySelectorAll('input, textarea');
+    liveInputs.forEach(input => {
+        if (input.type === 'checkbox' || input.type === 'radio') {
+            if (input.checked) input.setAttribute('checked', 'checked');
+            else input.removeAttribute('checked');
+        } else {
+            input.setAttribute('value', input.value);
+            if (input.tagName.toLowerCase() === 'textarea') {
+                input.innerHTML = input.value;
+            }
+        }
+    });
+
+    // 3. TẠO BẢN SAO (CLONE)
+    const formClone = document.querySelector('.container').cloneNode(true);
+    const ketQuaClone = document.getElementById('ketQuaDiem').cloneNode(true);
+
+    // 4. XỬ LÝ ẢNH (LOGO) - NÂNG CẤP ĐỂ LUÔN NẰM Ở TRÊN CÙNG
+    let logoHTML = "";
+    const cloneImages = formClone.querySelectorAll('img');
+    cloneImages.forEach(imgClone => {
+        const parentDiv = imgClone.parentNode;
+
+        // Thử chuyển đổi Base64 (Có thể lỗi nếu chạy local)
+        try {
+            const realImg = document.querySelector(`img[src="${imgClone.getAttribute('src')}"]`);
+            if (realImg) {
+                const canvas = document.createElement('canvas');
+                canvas.width = realImg.naturalWidth || 150;
+                canvas.height = realImg.naturalHeight || 150;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(realImg, 0, 0);
+                const base64Data = canvas.toDataURL('image/png');
+                imgClone.src = base64Data; // Cập nhật src thành Base64
+            }
+        } catch (e) {
+            console.warn("Trình duyệt chặn Base64, tiếp tục xuất với đường dẫn ảnh gốc.");
+        }
+
+        // Lưu lại HTML của ảnh và căn giữa
+        imgClone.style.width = '150px';
+        imgClone.style.height = 'auto';
+        logoHTML = `<div style="text-align: center; margin-bottom: 20px;">${imgClone.outerHTML}</div>`;
+
+        // ÉP BUỘC XÓA LOGO KHỎI FORM ĐỂ KHÔNG BỊ KẸT Ở GIỮA TRANG
+        if (parentDiv && parentDiv.tagName.toLowerCase() === 'div' && parentDiv.style.textAlign === 'center') {
+            parentDiv.parentNode.removeChild(parentDiv); // Xóa cả thẻ div bọc ngoài
+        } else {
+            imgClone.parentNode.removeChild(imgClone); // Chỉ xóa thẻ img
+        }
+    });
+
+    // 5. XỬ LÝ CÁC THẺ INPUT THÀNH KÝ TỰ WORD
+    const cloneInputs = formClone.querySelectorAll('input');
+    cloneInputs.forEach(input => {
+        const span = document.createElement('span');
+        span.style.fontFamily = 'Arial, sans-serif'; 
+
+        if (input.type === 'checkbox') {
+            span.innerHTML = input.hasAttribute('checked') ? '&#9745; ' : '&#9744; ';
+            span.style.fontSize = '16px';
+            input.parentNode.replaceChild(span, input);
+        } 
+        else if (input.type === 'radio') {
+            span.innerHTML = input.hasAttribute('checked') ? '&#9673; ' : '&#9711; ';
+            span.style.fontSize = '16px';
+            input.parentNode.replaceChild(span, input);
+        } 
+        else if (input.type === 'text' || input.type === 'email' || input.type === 'number') {
+            span.innerText = input.getAttribute('value') || '.........................';
+            span.style.fontWeight = 'bold';
+            input.parentNode.replaceChild(span, input);
+        }
+    });
+
+    const cloneTextareas = formClone.querySelectorAll('textarea');
+    cloneTextareas.forEach(ta => {
+        const div = document.createElement('div');
+        div.innerText = ta.innerHTML || '.........................';
+        div.style.fontWeight = 'bold';
+        ta.parentNode.replaceChild(div, ta);
+    });
+
+    const cloneKetQuaTextareas = ketQuaClone.querySelectorAll('textarea');
+    cloneKetQuaTextareas.forEach(ta => {
+        const div = document.createElement('div');
+        div.innerText = ta.innerHTML || '.........................';
+        div.style.fontWeight = 'bold';
+        div.style.color = 'blue';
+        ta.parentNode.replaceChild(div, ta);
+    });
+
+    // 6. BỐ CỤC LẠI NỘI DUNG XUẤT RA WORD 
+    // Logo được ghép nối ở vị trí đầu tiên, trước phần tiêu đề
+    const contentToExport = `
+        ${logoHTML}
+        <h2 style="text-align: center;">BÁO CÁO KHẢO SÁT VÀ KẾT QUẢ ĐÁNH GIÁ NĂNG LỰC CÔNG NGHỆ</h2>
+        <hr>
+        <h3>I. THÔNG TIN KHẢO SÁT DOANH NGHIỆP</h3>
+        ${formClone.innerHTML}
+        <br><br><hr><br>
+        <h3>II. KẾT QUẢ ĐÁNH GIÁ TRÌNH ĐỘ VÀ NĂNG LỰC CÔNG NGHỆ</h3>
+        ${ketQuaClone.innerHTML}
+    `;
+
+    // 7. Cấu hình file Word 
+    const header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' " +
+        "xmlns:w='urn:schemas-microsoft-com:office:word' " +
+        "xmlns='http://www.w3.org/TR/REC-html40'>" +
+        "<head><meta charset='utf-8'><title>Export HTML to Word</title>" +
+        "<style>" +
+        "body { font-family: 'Times New Roman', Times, serif; font-size: 14pt; line-height: 1.5; }" +
+        "table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }" +
+        "table, th, td { border: 1px solid black; padding: 8px; }" +
+        "</style>" +
+        "</head><body>";
+    const footer = "</body></html>";
+    
+    const sourceHTML = header + contentToExport + footer;
+    const blob = new Blob(['\ufeff', sourceHTML], { type: 'application/msword' });
+
+    // 8. Tạo link tải xuống
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'KetQua_DanhGia_NangLuc_CongNghe.doc';
+    
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+
+function toggleKhac(){
+
+const khacRadio = document.getElementById("linhvucKhac");
+const khacBox = document.getElementById("khacBox");
+const textbox = document.getElementById("linhvucKhacText");
+
+if(khacRadio.checked){
+    khacBox.style.display = "block";
+    textbox.required = true;
+}else{
+    khacBox.style.display = "none";
+    textbox.required = false;
+    textbox.value = "";
+}
+
+}
+
+function toggleSectionA(){
+const content = document.getElementById("sectionAContent");
+if(content.style.display === "none"){
+    content.style.display = "block";
+}else{
+    content.style.display = "none";
+}
+}
+
+function toggleSectionB(){
+const content = document.getElementById("sectionBContent");
+if(content.style.display === "none"){
+    content.style.display = "block";
+}else{
+    content.style.display = "none";
+}
+}
+
+function toggleSectionC(){
+const content = document.getElementById("sectionCContent");
+if(content.style.display === "none"){
+    content.style.display = "block";
+}else{
+    content.style.display = "none";
+}
+}
+
+function toggleRepairDept(){
+
+const checkbox = document.getElementById("repairDept");
+const detail = document.getElementById("repairDeptDetail");
+
+if(checkbox.checked){
+    detail.style.display = "block";
+}else{
+    detail.style.display = "none";
+}
+
+}
+
+function toggleSectionD(){
+
+const content = document.getElementById("sectionDContent");
+
+if(content.style.display === "none"){
+    content.style.display = "block";
+}else{
+    content.style.display = "none";
+}
+
+}
+
+function toggleSectionE(){
+const content = document.getElementById("sectionEContent");
+if(content.style.display === "none"){
+    content.style.display = "block";
+}else{
+    content.style.display = "none";
+}
+}
+
+function toggleSectionF(){
+const content = document.getElementById("sectionFContent");
+if(content.style.display === "none"){
+content.style.display = "block";
+}else{
+content.style.display = "none";
+}
+
+}
+
+/* theo dõi toàn bộ radio phần lĩnh vực */
+document.querySelectorAll('input[name="linhvuc"]').forEach(radio=>{
+radio.addEventListener("change", toggleKhac);
+});
+</script>
+
+</body>
+</html>
