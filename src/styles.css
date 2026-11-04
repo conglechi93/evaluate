@@ -23,7 +23,6 @@ button, input, textarea { font: inherit; }
   width: 100%;
   margin: auto;
   padding: 30px;
-  overflow: hidden;
   background: #fff;
   border: 1px solid #ccc;
   box-shadow: 0 8px 24px rgb(15 34 64 / 8%);
